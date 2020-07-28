@@ -1,0 +1,73 @@
+﻿@model RentModel.Models.Room
+
+<div class="card" style="background-color:rgb(131, 196, 228)">
+    <div class="container py-4">
+        <h3 class="text-center rounded text-white" style="background-color:rgb(41, 47, 76)">@Model.Name</h3>
+        <div class="row">
+            <div class="col-6">
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img class="d-block w-100" src="@ViewBag.Mainpic" alt="First slide" width="450" height="400">
+                        </div>
+                        @if (Model.Images != null)
+                        {
+                            @foreach (var pic in Model.Images)
+                            {
+                                @if (pic != null || pic != ViewBag.MainPic)
+                                {
+                                    <div class="carousel-item">
+                                        <img class="d-block w-100" src="pic.Path" width="400" height="320">
+                                    </div>
+                                }
+                            }
+                        }
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-6 text-white">
+                <div class="row mb-1 rounded pr-3 text-white mx-auto" style="background-color:rgb(41, 47, 76)">
+                    <div class="mx-auto">
+                        @Model.FullDescription
+                    </div>
+                <br />
+                </div>
+                <div class="row mt-3">
+                    <div class="col-4 border-right">
+                        <h6 class="mb-2">@Model.City</h6>
+                        <h6 class="mb-2">@Model.Address</h6>
+                        <h6 class="mb-2">@Model.ConstructionYear</h6>
+                        <h6 class="mb-2">@(Model.FromAgency ? "Pośrednik" : "Od osoby prywatnej") </h6>
+                    </div>
+                    <div class="col-4 border-right">
+                        <div class="mb-2">Piętro: @Model.Floor</div>
+                        <div class="mb-2">@(Model.HaveFurnishings ? "Umeblowane" : "Brak umeblowania")</div>
+                        <div class="mb-2">Powieszchnia pokoju: @Model.SquareMetrage</div>
+                        <div class="mb-2">Powieszchnia lokalu: @Model.TotalArea</div>
+                    </div>
+                    <div class="col-4">
+
+                        <div class="mb-2">Liczba lokatorów: @Model.NumberOfFlatmates</div>
+                        <div class="mb-2">Zaliczka: @Model.Advance</div>
+                        <div class="mb-2">Cena: @Model.Price</div>
+
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12 text-center">
+                        <span class="mx-3">Autor Ogłoszenia</span><span class="mx-3">Tel</span><a class="btn btn-light w-25 text-dark mx-2" asp-route-id="@Model.OwnerID" asp-controller="Advertisements" asp-action="Question">Zadaj Pytanie</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - RealRent</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+</head>
+<body style="background-color:rgb(255, 255, 255)">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="min-height:80px;background-color:rgb(5, 5, 5)">
+            <a class="navbar-brand" href="#">
+                @*<h2 class="text-white">
+                    Real-Rent
+                </h2>*@
+                <img src="~/images/RR.jpg" height="50" width="50" />
+            </a>
+            <button class="navbar-toggler navbar-toggler-right mr-5" type="button" data-toggle="collapse" data-target="#navb" aria-expanded="true">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse hide">
+                <ul class="navbar-nav m-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link ml-5" asp-controller="Customers" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link ml-5" asp-controller="Customers" asp-action="Privacy" style="font-size:18px">Polityka Prywatności</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link ml-5" asp-controller="Customers" asp-action="ONas" style="font-size:18px">O Nas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link ml-5" asp-controller="Customers" asp-action="Regulamin" style="font-size: 18px">Regulamin</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link ml-5" asp-controller="Customers" asp-action="Contact" style="font-size:18px">Kontakt/Pomoc</a>
+                    </li>
+                    
+                </ul>
+
+                @await Component.InvokeAsync("LoginStatus")
+            </div>
+        </nav>
+        
+    </header>
+    <div class="container-fluid">
+        <main role="main" class="pb-3">
+            <br />
+            @RenderBody()
+
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2020 - RealRent - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

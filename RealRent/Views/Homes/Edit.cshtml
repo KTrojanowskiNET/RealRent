@@ -1,0 +1,121 @@
+﻿@model EditHomeViewModel
+
+    <div class="container">
+        <div class="justify-content-center align-items-center">
+            <form enctype="multipart/form-data" class="text-dark" asp-controller="Homes" asp-action="Edit" method="post" style="background-color:rgb(131, 196, 228)">
+                <h3 class="text-center bg-primary rounded text-white pt-3" style="min-height:65px">Edytuj Mieszkanie</h3>
+                <div class="form-row mt-3">
+                    <div class="col-4 form-group">
+                        <label asp-for="Name">Tytuł</label>
+                        <input asp-for="Name" class="form-control" placeholder="Tytuł" />
+                        <span asp-validation-for="Name"></span>
+                    </div>
+                    <div class="col-4 form-group">
+                        <label asp-for="City">Miejscowość</label>
+                        <input asp-for="City" class="form-control" placeholder="Zmień miejscowość" />
+                        <span asp-validation-for="City"></span>
+                    </div>
+                </div>
+                <div class="form-row mt-3">
+                    <div class="col-8 form-group">
+                        <label asp-for="Address">Adres</label>
+                        <input asp-for="Address" class="form-control" placeholder="Zmień adres" />
+                        <span asp-validation-for="Address"></span>
+                    </div>
+                </div>
+                <div class="form-row mt-3">
+                    
+                    <div class="col-2 form-group">
+                        <label asp-for="NumberOfFloors">Liczba pięter</label>
+                        <input asp-for="NumberOfFloors" class="form-control" placeholder="Zmień liczbę pięter" />
+                        <span asp-validation-for="NumberOfFloors"></span>
+                    </div>
+                    <div class="col-2 form-group">
+                        <label asp-for="NumberOfRooms">Liczba pokoi</label>
+                        <input asp-for="NumberOfRooms" class="form-control" placeholder="Zmień liczbę pokoi" />
+                        <span asp-validation-for="NumberOfRooms"></span>
+                    </div>
+                    <div class="col-2 form-group">
+                        <label asp-for="SquareMetrage">Powieszchnia</label>
+                        <input asp-for="SquareMetrage" class="form-control" placeholder="Zmień powieszchnię lokalu" />
+                        <span asp-validation-for="SquareMetrage"></span>
+                    </div>
+                    <div class="col-2 form-group">
+                        <label asp-for="TotalArea">Powieszchnia działki</label>
+                        <input asp-for="TotalArea" class="form-control" placeholder="Zmień powieszchnię działki" />
+                        <span asp-validation-for="TotalArea"></span>
+                    </div>
+                </div>
+                <div class="form-row mt-3">
+                    <div class="col-3 form-group">
+                        <label asp-for="ConstructionYear">Rok budowy</label>
+                        <input asp-for="ConstructionYear" class="form-control" placeholder="Zmień Rok budowy" />
+                        <span asp-validation-for="ConstructionYear"></span>
+                    </div>
+                    <div class="col-2 form-group mt-auto ml-4">
+                        <input asp-for="HaveFurnishings" class="form-check-input" type="checkbox" />
+                        <label asp-for="HaveFurnishings">Umeblowanie</label>
+                    </div>
+                    <div class="col-2 form-group mt-auto ml-4">
+                        <input asp-for="HaveGarage" class="form-check-input" type="checkbox" />
+                        <label asp-for="HaveGarage">Umeblowanie</label>
+                    </div>
+                    
+                </div>
+                <div class="form-row mt-3">
+                    <div class="col-8 form-group">
+                        <label asp-for="Description">Opis</label>
+                        <textarea asp-for="Description" class="form-control"></textarea>
+                        <span asp-validation-for="Description"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="MainImage">Zdjęcie główne</label>
+                        <div class="custom-file">
+                            <input asp-for="MainImage" class="form-control custom-file-input">
+                            <label class="custom-file-label">Zmień zdjęcie główne...</label>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <label asp-for="Images">Zdjęcie</label>
+                        <div class="custom-file">
+                            <input asp-for="Images" multiple class="form-control custom-file-input">
+                            <label class="custom-file-label">Zmień galerię zdjęć...</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row mt-3">
+                    <div class="col-3 form-group">
+                        <h5 class="text-white"><label asp-for="Advance">Zaliczka</label></h5>
+                        <input asp-for="Advance" class="form-control" placeholder="Zmień Wysokość zaliczki" />
+                        <span asp-validation-for="Advance"></span>
+                    </div>
+                    <div class="col-3 form-group">
+                        <h5 class="text-white"><label asp-for="Price">Cena</label></h5>
+                        <input asp-for="Price" class="form-control" placeholder="Zmień cenę" />
+                        <span asp-validation-for="Price"></span>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-success mb-1" style="width:270px">Edytuj</button><a asp-action="Index" asp-controller="Customers" class="btn btn-danger ml-2 mb-1" style="width:270px">Anuluj</a>
+                </div>
+                @section Scripts {
+                    <script>
+                    $(document).ready(function () {
+                        $('.custom-file-input').on("change", function () {
+                            var fileLabel = $(this).next('.custom-file-label');
+                            var files = $(this)[0].files;
+                            if (files.length > 1) {
+                                fileLabel.html(files.length + ' files selected');
+                            }
+                            else if (files.length == 1) {
+                                fileLabel.html(files[0].name);
+                            }
+                        });
+                    });
+                    </script>
+                }
+            </form>
+        </div>
+    </div>

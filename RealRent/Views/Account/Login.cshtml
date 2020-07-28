@@ -1,0 +1,33 @@
+﻿@model RealRent.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="card w-50 mx-auto p-1 mt-5 text-dark" style="background-color:rgb(131, 196, 228)">
+        <h2 class="card-title text-center">Zaloguj</h2><hr />
+        <div asp-validation-summary="All" hidden="hidden" class="text-danger"></div>
+        <form method="post" asp-action="Login" asp-controller="Account">
+            <div class="form-group">
+                <label asp-for="UserName"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password"></span>
+
+            </div>
+            <div class="form-group ml-4">
+                <input type="checkbox" asp-for="RememberMe" class="form-check-input" />
+                <label asp-for="RememberMe" class="form-check-label"></label>
+            </div>
+            <div class="text-center mb-2">
+                <button type="submit" class="btn btn-primary">Zaloguj</button>
+                <a asp-action="Index" asp-controller="Customer" class="btn btn-danger ml-2">Anuluj</a>
+            </div>
+        </form>
+    </div>
+

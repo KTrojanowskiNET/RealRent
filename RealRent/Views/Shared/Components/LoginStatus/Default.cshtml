@@ -1,0 +1,36 @@
+﻿
+
+@using Microsoft.AspNetCore.Identity
+@using RentModel.Models
+
+@inject SignInManager<AppUser> SignInManager
+
+
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <ul class="nav navbar-nav ml-auto">
+        <li class="nav-item">
+                <a class="btn btn-sm bg-white pt-2" asp-controller="Account" asp-action="MyAccount" style="height:2.6em"><h6 class="text-dark">Moje konto</h6></a>
+        </li>
+        <li class="nav-item ml-2">
+            <form method="post" asp-controller="account" asp-action="logout">
+                <button type="submit" class="btn btn-sm bg-white pt-2" style="height:2.6em"><h6 class="text-dark">Wyloguj</h6></button>
+            </form>
+        </li>
+    </ul>
+}
+else
+{
+    <ul class="nav navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="btn btn-sm btn-light pt-2" asp-controller="account" asp-action="register" style="height:2.6em;"><h6 class="text-dark">Zarejestruj</h6></a>
+        </li>
+        <li class="nav-item ml-2">
+            <a class="btn btn-sm btn-light pt-2" asp-controller="account" asp-action="login" style="height:2.6em;"><h6 class="px-2 text-dark">Zaloguj</h6></a>
+        </li>
+    </ul>
+}
+
+
+

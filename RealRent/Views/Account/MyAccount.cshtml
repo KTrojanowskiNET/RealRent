@@ -1,0 +1,80 @@
+﻿@model MyAccountViewModel
+
+    <div class="container">
+        <div class="row mx-0 px-0">
+            <div class="col-12 mx-0 px-0 text-center container-fluid" style="position:relative">
+                <img src="~/images/Account-banner.jpg" style="width:100%;" />
+                
+            </div>
+        </div><br /><br />
+        <div class="row">
+            <div class="col-4">
+                <div class="card text-dark" style="background-color:rgb(131, 196, 228)">
+                    <h2 class="mx-auto">@Model.CurrentUser.UserName</h2><br />
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="text-center border-top border-white pt-4">
+                                Imię: @Model.CurrentUser.FirstName
+                            </div><br />
+                            <div class="text-center border-top border-white pt-4">
+                                Nazwisko: @Model.CurrentUser.LastName
+                            </div><br />
+                            <div class="text-center border-top border-white pt-4">
+                                Email: @Model.CurrentUser.Email
+                            </div><br />
+                            <div class="text-center border-top border-white pt-4">
+                                Tel: @Model.CurrentUser.PhoneNumber
+                            </div><br />
+                            <div class="text-center mb-2">
+                                <a class="btn btn-info text-white" asp-route-id="@Model.CurrentUser.Id" asp-action="EditAccount" asp-controller="Account">Edytuj</a>
+                                <a class="btn btn-info text-white" asp-action="ChangePassword" asp-controller="Account">Zmień hasło</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-8">
+                <h2 class="text-center rounded text-white" style="background-color:rgb(34, 39, 66)">Moje Ogłoszenia</h2>
+                @if (Model.CurrentAdvertisements.Count == 0)
+                {
+                    <div>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <h1 class="text-center">Brak aktywnych ogłoszeń</h1>
+                    </div>
+                }
+                    @foreach (var adv in Model.CurrentAdvertisements)
+                    {
+                        <div class="card text-dark" style="background-color:rgb(131, 196, 228)">
+                            <h4 class="mx-auto rounded text-dark">@adv.Name</h4>
+                            <div class="row btn-sm">
+                                <p class="mx-auto">Typ: @adv.PropertyType.ToString()</p>
+                                <p class="mx-auto">Dodano: @adv.DateAdded</p>
+                                <p class="mx-auto">Wygaśnie: @adv.EndDate</p>
+                                <p class="mx-auto">Promowane: @(adv.IsPromoted ? "Tak" : "Nie")</p>
+                            </div>
+                            <div class="row">
+                                <div class=" offset-2 col-2 text-center">
+                                    <a class="btn btn-sm btn-light text-dark mb-1" asp-action="Details" asp-controller="Advertisements" asp-route-type="@adv.PropertyType" asp-route-name="@adv.Name">Szczegóły</a>
+                                </div>
+                                <div class="col-2 text-center">
+                                    <a class="btn btn-sm btn-info mb-1" asp-action="Edit" asp-controller="Advertisements" asp-route-type="@adv.PropertyType" asp-route-name="@adv.Name">Edytuj</a>
+                                </div>
+                                <div class="col-2 text-center">
+                                    <a class="btn btn-sm btn-success mb-1" asp-action="Promote" asp-controller="Advertisements" asp-route-id="@adv.AdvertisementId">Promuj</a>
+                                </div>
+                                <div class="col-2 text-center">
+                                    <a class="btn btn-sm btn-danger mb-1" asp-action="Delete" asp-controller="Advertisements" asp-route-id="@adv.AdvertisementId" asp-route-type="@adv.PropertyType">Zakończ</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+            </div>
+        </div>
+
+    </div>

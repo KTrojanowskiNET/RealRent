@@ -1,0 +1,21 @@
+﻿@model int
+@{
+    ViewData["Title"] = "Promote";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <div class="container">
+        <form class="mx-auto rounded" asp-action="PromotePost" asp-controller="Advertisements" method="post" style="width:400px;height:250px;background-color:rgb(131, 196, 228)">
+            <div class="card-body">
+                <h1 class="text-center text-dark">Wykonaj Przelew</h1>
+                <h4 class="text-center text-dark">Do zapłaty: 19.90 zł</h4>
+                <input name="id" value="@ViewBag.Id" hidden />
+                <br /><br />
+            </div>
+                <div class="text-center">
+                    <button class="btn btn-lg btn-light text-dark" type="submit">Zapłać</button>
+                </div>
+
+        </form>
+    </div>
+
+
