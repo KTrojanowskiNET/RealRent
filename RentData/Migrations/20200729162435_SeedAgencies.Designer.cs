@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RentData;
 
 namespace RentData.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200729162435_SeedAgencies")]
+    partial class SeedAgencies
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -813,13 +815,13 @@ namespace RentData.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8ba3f38b-84a6-4fc4-9c48-702a153c8995",
+                            ConcurrencyStamp = "fa761471-4283-4fed-9d12-46cd99252f8a",
                             Email = "boni@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumber = "123 233 122",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1b6bcaef-4491-46af-a429-f6f9e1ae95db",
+                            SecurityStamp = "9ffbbe1b-81ba-4c01-afc3-fe810a498d58",
                             TwoFactorEnabled = false,
                             UserName = "Boni",
                             Address = "Młotkowa 2/7",

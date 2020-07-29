@@ -59,6 +59,27 @@ namespace RentData
             modelBuilder.Entity<CommercialSpace>().OwnsMany(a => a.Images);
             modelBuilder.Entity<Room>().OwnsMany(a => a.Images);
 
+
+            modelBuilder.Entity<Agency>().HasData(
+                new Agency
+                {
+                    AgencyId = 1,
+                    Name = "Agency A",
+                    Address = "Wrzosowa 7/99",
+                    Slogan = "Slogan A",
+                    PhoneNumber = "111 627 199"
+
+                });
+            modelBuilder.Entity<Agency>().HasData(
+                new Agency
+                {
+                    AgencyId = 2,
+                    Name = "Agency B",
+                    Address = "Wrzosowa 7/999",
+                    Slogan = "Slogan B",
+                    PhoneNumber = "441 127 959"
+
+                });
             modelBuilder.Entity<AppUser>().HasData(new AppUser
             {  
                 Id = "1",
@@ -277,20 +298,7 @@ namespace RentData
                 //}
 
             });
-            modelBuilder.Entity<Agency>().HasData(new Agency
-            {
-                AgencyId = 1,
-                Name = "X Property",
-                PhoneNumber = "111 697 999"
-
-            },
-            new Agency
-            {
-                AgencyId = 2,
-                Name = "A Property",
-                PhoneNumber = "111 555 999"
-            });
-
+           
             //modelBuilder.Entity<Photo>().HasData(
             //new Photo
             //{  PhotoId = -1, PhotoName = "SeedPhoto.jpg", PhotoPath = "./RealRent/wwwroot/images", RoomPrincipalId = 1 },

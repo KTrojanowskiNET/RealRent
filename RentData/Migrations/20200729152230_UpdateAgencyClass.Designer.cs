@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RentData;
 
 namespace RentData.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200729152230_UpdateAgencyClass")]
+    partial class UpdateAgencyClass
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -292,18 +294,14 @@ namespace RentData.Migrations
                         new
                         {
                             AgencyId = 1,
-                            Address = "Wrzosowa 7/99",
-                            Name = "Agency A",
-                            PhoneNumber = "111 627 199",
-                            Slogan = "Slogan A"
+                            Name = "X Property",
+                            PhoneNumber = "111 697 999"
                         },
                         new
                         {
                             AgencyId = 2,
-                            Address = "Wrzosowa 7/999",
-                            Name = "Agency B",
-                            PhoneNumber = "441 127 959",
-                            Slogan = "Slogan B"
+                            Name = "A Property",
+                            PhoneNumber = "111 555 999"
                         });
                 });
 
@@ -813,13 +811,13 @@ namespace RentData.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8ba3f38b-84a6-4fc4-9c48-702a153c8995",
+                            ConcurrencyStamp = "9fcef14b-bb92-4c54-8bed-ac1229413e8c",
                             Email = "boni@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumber = "123 233 122",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1b6bcaef-4491-46af-a429-f6f9e1ae95db",
+                            SecurityStamp = "75ff2cfa-e853-411a-b5b5-844bc902be79",
                             TwoFactorEnabled = false,
                             UserName = "Boni",
                             Address = "Młotkowa 2/7",

@@ -13,7 +13,11 @@ namespace RentModel.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int AgencyId { get; set; }
         public string Name { get; set; }
+        public string Address { get; set; }
+        [Phone]
         public string PhoneNumber { get; set; }
+
+        public string Slogan { get; set; }
         [ForeignKey(nameof(Advertisement))]
         public int? AdvertisementId { get; set; }
         public Advertisement Advertisement { get; set; }

@@ -148,11 +148,5 @@ namespace RealRent.Controllers
             return View(model);
         }
 
-        public IActionResult Question()
-        {
-
-            throw new NotImplementedException();
-        }
-
     }
 }
