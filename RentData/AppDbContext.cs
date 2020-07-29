@@ -35,7 +35,8 @@ namespace RentData
             modelBuilder.Entity<Advertisement>().HasOne(h => h.CommercialSpace).WithOne(a => a.Advertisement).HasForeignKey<CommercialSpace>(a => a.AdvertisementId).IsRequired(false).OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<Advertisement>().HasOne(h => h.Room).WithOne(a => a.Advertisement).HasForeignKey<Room>(a => a.AdvertisementId).IsRequired(false).OnDelete(DeleteBehavior.Cascade);
 
-            //Need 2 Image relationships for List and MainImage, use Inverseproperty?
+            modelBuilder.Entity<Advertisement>().HasOne(a => a.Agency).WithOne().HasForeignKey<Agency>(a => a.AdvertisementId).IsRequired(false).OnDelete(DeleteBehavior.SetNull);
+                //Need 2 Image relationships for List and MainImage, use Inverseproperty?
 
             //modelBuilder.Entity<Home>().HasMany(h => h.Images).WithOne(i => i.HomesPrincipal).HasForeignKey(i => i.HomesPrincipalId).IsRequired(false).OnDelete(DeleteBehavior.NoAction);
             //modelBuilder.Entity<Apartment>().HasMany(a => a.Images).WithOne(i => i.ApartmentsPrincipal).HasForeignKey(i => i.ApartmentsPrincipalId).IsRequired(false).OnDelete(DeleteBehavior.NoAction);

@@ -51,7 +51,7 @@ namespace RealRent.Controllers
             catch (Exception ex)
             {
 
-                logger.LogError("Getting Advertisement from repository failed, message: {1}", ex.Message);
+                logger.LogError($"Getting Advertisement from repository failed, message: {1}", ex.Message);
             }
             return Ok();
         }

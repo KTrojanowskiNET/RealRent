@@ -28,6 +28,7 @@ namespace RentModel.Models
         public AppUser User { get; set; }
         public bool IsPromoted { get; set; }
         public PropertyType PropertyType { get; set; }
+        public Agency Agency { get; set; }
 
     }
 }
