@@ -1,6 +1,7 @@
-﻿@model AddApartmentViewModel
+﻿
+@model RealRent.Models.AddApartmentViewModel
 
-    <div class="container">
+<div class="container">
     <div class="justify-content-center align-items-center">
         <form enctype="multipart/form-data" class="text-dark" asp-controller="Advertisements" asp-action="AddApartment" method="post" style="background-color:rgb(131, 196, 228)">
             <h3 class="text-center bg-primary rounded text-white pt-3" style="min-height:65px">Dodaj Mieszkanie</h3>
@@ -109,25 +110,30 @@
                     <span asp-validation-for="Price"></span>
                 </div>
             </div>
-            <div class="mt-4">
-                <button type="submit" class="btn btn-success mb-1" style="width:270px">Dodaj</button><a asp-action="Index" asp-controller="Customers" class="btn btn-danger ml-2 mb-1" style="width:270px">Anuluj</a>
-            </div>
-            @section Scripts {
-                <script>
-                    $(document).ready(function () {
-                        $('.custom-file-input').on("change", function () {
-                            var fileLabel = $(this).next('.custom-file-label');
-                            var files = $(this)[0].files;
-                            if (files.length > 1) {
-                                fileLabel.html(files.length + ' files selected');
-                            }
-                            else if (files.length == 1) {
-                                fileLabel.html(files[0].name);
-                            }
+            <div class="form-row mt-3">
+                <div class="col-4 form-group">
+                    <agenciesdropdown></agenciesdropdown>
+                </div>
+                </div>
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-success mb-1" style="width:270px">Dodaj</button><a asp-action="Index" asp-controller="Customers" class="btn btn-danger ml-2 mb-1" style="width:270px">Anuluj</a>
+                </div>
+                @section Scripts {
+                    <script>
+                        $(document).ready(function () {
+                            $('.custom-file-input').on("change", function () {
+                                var fileLabel = $(this).next('.custom-file-label');
+                                var files = $(this)[0].files;
+                                if (files.length > 1) {
+                                    fileLabel.html(files.length + ' files selected');
+                                }
+                                else if (files.length == 1) {
+                                    fileLabel.html(files[0].name);
+                                }
+                            });
                         });
-                    });
-                </script>
-            }
-        </form>
+                    </script>
+                }
+</form>
     </div>
-    </div>
+</div>

@@ -1,17 +1,15 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Hosting.Internal;
 using Microsoft.Extensions.Logging;
 using RealRent.Models;
-using RentData;
+using RealRent.ViewModels;
 using RentData.IRepos;
-using RentModel.Models;
 using RentModel;
+using RentModel.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace RealRent.Controllers
