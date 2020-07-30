@@ -1,13 +1,7 @@
-﻿using MimeKit;
-using MailKit.Net.Smtp;
-using Xunit;
+﻿using Xunit;
 using FluentAssertions;
 
 using RentModel.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using FluentAssertions.Common;
 using Moq;
 using RealRent.Models;
 
@@ -40,13 +34,10 @@ namespace RealRent.Test
             //Assert
 
             testMessageService.Verify(ms => ms.MessageToUser(testMessage), Times.AtLeastOnce);
-            
-            
-
-            
-            
-           
+                                               
+                       
         }
+       
 
     }
 }

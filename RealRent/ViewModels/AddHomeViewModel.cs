@@ -45,6 +45,7 @@ namespace RealRent.Models
         public double? Advance { get; set; }
         public List<IFormFile> Images { get; set; }
         public IFormFile MainImage { get; set; }
+        public string AgencyName { get; set; }
 
         public int AdvLength { get; set; }
 

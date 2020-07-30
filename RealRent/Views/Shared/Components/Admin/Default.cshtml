@@ -1,0 +1,21 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using RentModel.Models
+
+@inject SignInManager<AppUser> SignInManager
+
+@{
+    Layout = null;
+}
+
+@if (SignInManager.IsSignedIn(User))
+{
+    @if (SignInManager.UserManager.GetUserName(User).Contains("Admin") || SignInManager.UserManager.GetUserName(User).Contains("admin"))
+    {
+        <li class="nav-item">
+            <a class="btn btn-outline-info text-white ml-5 mt-1" asp-controller="Admin" asp-action="Users" style="font-size:12px">Zarządzaj użytkownikami</a>
+        </li>
+        <li class="nav-item">
+            <a class="btn btn-outline-info text-white ml-2 mt-1" asp-controller="Admin" asp-action="Properties" style="font-size:12px">Zarządzaj ogłoszeniami</a>
+        </li>
+    }
+}

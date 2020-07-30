@@ -28,4 +28,8 @@
     <ProjectReference Include="..\RentData\RentData.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="TestClasses\" />
+  </ItemGroup>
+
 </Project>

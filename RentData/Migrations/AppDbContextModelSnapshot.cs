@@ -323,7 +323,7 @@ namespace RentData.Migrations
                     b.Property<int?>("AdvertisementId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Agent")
+                    b.Property<string>("AgencyName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("City")
@@ -446,7 +446,7 @@ namespace RentData.Migrations
                     b.Property<int?>("AdvertisementId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Agent")
+                    b.Property<string>("AgencyName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("City")
@@ -559,7 +559,7 @@ namespace RentData.Migrations
                     b.Property<int?>("AdvertisementId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Agent")
+                    b.Property<string>("AgencyName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("City")
@@ -681,6 +681,9 @@ namespace RentData.Migrations
 
                     b.Property<int?>("AdvertisementId")
                         .HasColumnType("int");
+
+                    b.Property<string>("AgencyName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Agent")
                         .HasColumnType("nvarchar(max)");
@@ -813,13 +816,13 @@ namespace RentData.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8ba3f38b-84a6-4fc4-9c48-702a153c8995",
+                            ConcurrencyStamp = "7013f7a8-fd16-48c1-9183-29acbf9741c4",
                             Email = "boni@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumber = "123 233 122",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1b6bcaef-4491-46af-a429-f6f9e1ae95db",
+                            SecurityStamp = "4c4fa797-f8ed-4333-b74d-7c79fb363e6d",
                             TwoFactorEnabled = false,
                             UserName = "Boni",
                             Address = "Młotkowa 2/7",

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -14,6 +15,7 @@ using System.Threading.Tasks;
 
 namespace RealRent.Controllers
 {
+        [Authorize]
     public class AdvertisementsController : Controller
     {
         private readonly ILogger<AdvertisementsController> logger;
@@ -35,11 +37,6 @@ namespace RealRent.Controllers
             this.messageService = messageService;
         }
 
-        public IActionResult List()
-        {
-
-            throw new NotImplementedException();
-        }
         [HttpGet]
         public IActionResult Details(PropertyType type, string name)
         {
@@ -96,7 +93,8 @@ namespace RealRent.Controllers
                     Price = model.Price,
                     MainPageDisplay = model.MainPageDisplay,
                     Images = new List<Photo>(),
-                    OwnerID = user.Id
+                    OwnerID = user.Id,
+                    AgencyName = model.AgencyName
 
                 };
 
@@ -116,16 +114,18 @@ namespace RealRent.Controllers
                     var photo = new Photo()
                     {
                         PhotoName = mainName,
-                        PhotoPath = Path.Combine(Path.Combine(hostingEnvironment.WebRootPath, "images"))
+                        PhotoPath = Path.Combine(hostingEnvironment.WebRootPath, "images")
                         //If using HasOne (OneToOne Relationship) instead of Owns One(OwnedType)
                         //HomePrincipal = home
                     };
                     adManager.UploadPhoto(model.MainImage, Path.Combine(hostingEnvironment.WebRootPath, "images"), mainName);
                     home.MainImageName = photo.PhotoName;
                 }
+                //Lista przchowująca dane nazw zdjęć ponieważ uniqueName ma ograniczony scope
                 List<string> photoNames = new List<string>();
                 if (model.Images != null && model.Images.Count > 0)
                 {
+                    //Tworzenie Folderu na zdjęcia
                     var galleryPath = Path.Combine(hostingEnvironment.WebRootPath, "images", "Gallery_home_id_" + $"{model.Name}");
                     if (!Directory.Exists(galleryPath))
                     {
@@ -145,14 +145,15 @@ namespace RealRent.Controllers
                 adv.Home = home;
                 unit.AdvertismentRepository.AddAdvertisement(adv);
                 unit.SaveData();
-
+                //Jeśli ogłoszenie ma być wyświetlane na stronie głównej,
+                //następuje przekierowanie do metody Promote gdzie trzeba dokonać płatności za promowanie
                 if (home.MainPageDisplay == true)
                 {
 
                     return RedirectToAction("Promote", "Advertisements", new { id = adv.AdvertisementId });
                 }
             }
-            return RedirectToAction("Success", "Advertisements");
+            return RedirectToAction("Success", "Customers");
 
 
         }
@@ -189,7 +190,9 @@ namespace RealRent.Controllers
                     NumberOfFlatmates = model.NumberOfFlatmates,
                     MainPageDisplay = model.MainPageDisplay,
                     Images = new List<Photo>(),
-                    OwnerID = user.Id
+                    OwnerID = user.Id,
+                    AgencyName = model.AgencyName
+
 
                 };
                 Advertisement adv = new Advertisement
@@ -241,7 +244,7 @@ namespace RealRent.Controllers
                     return RedirectToAction("Promote", "Advertisements", adv);
                 }
             }
-            return RedirectToAction("Success", "Advertisements");
+            return RedirectToAction("Success", "Customers");
 
 
         }
@@ -278,7 +281,8 @@ namespace RealRent.Controllers
                     HaveBalcony = model.HaveBalcony,
                     PropertyType = PropertyType.Mieszkanie,
                     Images = new List<Photo>(),
-                    OwnerID = user.Id
+                    OwnerID = user.Id,
+                    AgencyName = model.AgencyName
 
 
                 };
@@ -334,7 +338,7 @@ namespace RealRent.Controllers
                     return RedirectToAction("Promote", "Advertisements", adv);
                 }
             }
-            return RedirectToAction("Success", "Advertisements");
+            return RedirectToAction("Success", "Customers");
 
         }
 
@@ -369,7 +373,8 @@ namespace RealRent.Controllers
                     LocalType = model.Type,
                     Floor = model.Floor,
                     OwnerID = user.Id,
-                    Images = new List<Photo>()
+                    Images = new List<Photo>(),
+                    AgencyName = model.AgencyName
 
                 };
 
@@ -424,7 +429,7 @@ namespace RealRent.Controllers
                     return RedirectToAction("Promote", "Advertisements", adv);
                 }
             }
-            return RedirectToAction("Success", "Advertisements");
+            return RedirectToAction("Success", "Customers");
 
         }
 
@@ -451,12 +456,11 @@ namespace RealRent.Controllers
                 return RedirectToAction("Edit", "Rooms", new { id = room.RoomId });
             }
         }
-
+       //Usunięcie ogłoszenia skutkuje usunięciem także nieruchomości, dzięki ustawieniu OnDelete.Cascade w konfiguracji Relationships za pomocą Fluent API
         public IActionResult Delete(int id, PropertyType type)
         {
             if (type == PropertyType.Dom)
             {
-
                 unit.AdvertismentRepository.DeleteHomeAdvertisement(id);
             }
             if (type == PropertyType.Mieszkanie)
@@ -472,7 +476,7 @@ namespace RealRent.Controllers
                 unit.AdvertismentRepository.DeleteRoomAdvertisement(id);
             }
             unit.SaveData();
-            return RedirectToAction("Success", "Advertisements");
+            return RedirectToAction("Success", "Customers");
         }
 
 
@@ -492,7 +496,7 @@ namespace RealRent.Controllers
             unit.SaveData();
             if (adv.IsPromoted == true)
             {
-                return RedirectToAction("Success", "Advertisements");
+                return RedirectToAction("Success", "Customers");
             }
             else
             {
@@ -500,11 +504,7 @@ namespace RealRent.Controllers
             }
         }
 
-
-        public IActionResult Success()
-        {
-            return View();
-        }
+            
         [HttpGet]
         public async Task<IActionResult> Question(string id)
         {
@@ -540,7 +540,7 @@ namespace RealRent.Controllers
                 messageService.MessageToUser(message);
 
             }
-            return RedirectToAction("Success", "Advertisements");
+            return RedirectToAction("Success", "Customers");
 
 
         }

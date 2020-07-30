@@ -61,7 +61,7 @@ namespace RentData.Repositories
 
         public IEnumerable<Apartment> GetApartments()
         {
-            return dbContext.Apartments;
+            return dbContext.Apartments.AsNoTracking();
         }
     }
 }

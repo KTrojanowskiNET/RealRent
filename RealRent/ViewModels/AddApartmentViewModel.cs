@@ -36,6 +36,7 @@ namespace RealRent.Models
 
         [Required(ErrorMessage = "To pole jest wymagane")]
         public int ConstructionYear { get; set; }
+        public string AgencyName { get; set; }
 
         public bool HaveBalcony { get; set; }
         public bool HaveFurnishings { get; set; }

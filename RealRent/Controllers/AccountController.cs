@@ -176,7 +176,7 @@ namespace RealRent.Controllers
 
                 if (updateResult.Succeeded)
                 {
-                    return RedirectToAction("Success", "Advertisements");
+                    return RedirectToAction("Success", "Customers");
                 }
                 else
                 {

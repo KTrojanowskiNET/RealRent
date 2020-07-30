@@ -14,10 +14,7 @@
                 </div>
                 <div class="card-body">
                     <div class="card-text text-dark">
-                        Description : Proin auctor porttitor dictum.
-                        Nulla rhoncus metus libero, vestibulum laoreet dolor blandit quis.
-                        Ut velit dui, scelerisque vitae porta ac.
-                        
+                        @Model.ShortDescription
                        <a asp-action="Details" asp-controller="Advertisements" asp-route-type="@Model.PropertyType" asp-route-name="@Model.Name"
                           class="btn btn-light btn-sm text-dark float-right mt-2 ml-5">Szczegóły</a>
                         

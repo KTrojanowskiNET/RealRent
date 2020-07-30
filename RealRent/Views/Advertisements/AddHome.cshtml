@@ -110,6 +110,13 @@
                     <span asp-validation-for="Price"></span>
                 </div>
             </div>
+            <div class="form-row mt-3">
+                <div class="col-4 form-group">
+                    <select class="form-control  dropdown-info" asp-for="AgencyName">
+                        <agencies-drop></agencies-drop>
+                    </select>
+                </div>
+            </div>
             <div class="mt-4">
                 <button type="submit" class="btn btn-success mb-1" style="width:270px">Dodaj</button><a asp-action="Index" asp-controller="Customers" class="btn btn-danger ml-2 mb-1" style="width:270px">Anuluj</a>
             </div>

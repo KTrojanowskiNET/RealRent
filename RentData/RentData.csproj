@@ -9,6 +9,8 @@
     <Compile Remove="Migrations\20200728154233_AgencyRelationshipAdded.Designer.cs" />
     <Compile Remove="Migrations\20200728160600_AgencyRelationshipAdded2.cs" />
     <Compile Remove="Migrations\20200728160600_AgencyRelationshipAdded2.Designer.cs" />
+    <Compile Remove="Migrations\20200802110330_IpropertyForeignKeyNonNullable.cs" />
+    <Compile Remove="Migrations\20200802110330_IpropertyForeignKeyNonNullable.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

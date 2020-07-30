@@ -11,10 +11,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RealRent.Controllers
 {
-    public class RoomsController : Controller
+    [Authorize]
+        public class RoomsController : Controller
     {
         private readonly ILogger<RoomsController> logger;
         private readonly AppDbContext dbContext;
@@ -39,6 +41,7 @@ namespace RealRent.Controllers
             {
                 return NotFound();
             }
+            ViewBag.Counter = rooms.Count();
             return View(rooms);
         }
 
@@ -57,6 +60,7 @@ namespace RealRent.Controllers
             }
             else
             {
+                //Zdjęcie domyślne gdy użytkownik nie poda swojego
                 ViewBag.MainPic = Url.Content("~/images/rom.jpeg");
             }
             return View(room);
@@ -81,7 +85,9 @@ namespace RealRent.Controllers
                 Id = room.RoomId,
                 HaveFurnishings = room.HaveFurnishings,
                 NumberOfFlatmates = room.NumberOfFlatmates,
-                TotalArea = room.TotalArea
+                TotalArea = room.TotalArea,
+                AgencyName = room.AgencyName,
+                MainImageName = room.MainImageName
             };
             return View(model);
         }
@@ -117,6 +123,8 @@ namespace RealRent.Controllers
                         PhotoName = name,
                         PhotoPath = Path.Combine(hostEnvironment.WebRootPath, "images")
                     };
+                    room.MainImageName = name;
+
                 }
 
                 if (model.Images != null)
@@ -141,7 +149,7 @@ namespace RealRent.Controllers
 
                 unit.RoomRepository.EditRoom(room);
                 unit.SaveData();
-                return RedirectToAction("Success", "Advertisements");
+                return RedirectToAction("Success", "Customers");
 
 
             }

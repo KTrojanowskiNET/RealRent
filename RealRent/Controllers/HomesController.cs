@@ -12,9 +12,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RealRent.Controllers
 {
+    [Authorize]
     public class HomesController : Controller
     {
         private readonly ILogger<HomesController> logger;
@@ -41,6 +43,8 @@ namespace RealRent.Controllers
             {
                 return NotFound();
             }
+            ViewBag.Counter = homes.Count();
+
             return View(homes);
         }
 
@@ -81,13 +85,14 @@ namespace RealRent.Controllers
                 SquareMetrage = home.SquareMetrage,
                 Name = home.Name,
                 NumberOfRooms = home.NumberOfRooms,
-                //MainImageName = home.MainImage.PhotoName,
+                MainImageName = home.MainImageName,
                 Id = home.HomeId,
                 NumberOfFloors = home.NumberOfFloors,
                 TotalArea = home.TotalArea,
                 HaveFurnishings = home.HaveFurnishings,
-                HaveGarage = home.HaveGarage
-            };
+                HaveGarage = home.HaveGarage,
+                AgencyName = home.AgencyName
+                            };
             return View(viewModel);
         }
 
@@ -125,6 +130,7 @@ namespace RealRent.Controllers
                         PhotoName = name,
                         PhotoPath = Path.Combine(environment.WebRootPath, "images")
                     };
+                home.MainImageName = name;
                 }
                 if (model.Images != null)
                 {
@@ -148,7 +154,7 @@ namespace RealRent.Controllers
 
                 unit.HomeRepository.EditHome(home);
                 unit.SaveData();
-                return RedirectToAction("Success", "Advertisements");
+                return RedirectToAction("Success", "Customers");
 
             }
 

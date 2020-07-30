@@ -57,7 +57,7 @@ namespace RentData.Repositories
 
         public IEnumerable<Home> GetHomes()
         {
-            return dbContext.Homes.Include(h => h.MainImage);
+            return dbContext.Homes.AsNoTracking().Include(h => h.MainImage);
         }
     }
 }

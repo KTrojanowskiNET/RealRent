@@ -90,14 +90,21 @@
                     <h5 class="text-white"><label asp-for="Advance">Zaliczka</label></h5>
                     <input asp-for="Advance" class="form-control" placeholder="Zmień Wysokość zaliczki" />
                     <span asp-validation-for="Advance"></span>
-
                 </div>
                 <div class="col-3 form-group">
                     <h5 class="text-white"><label asp-for="Price">Cena</label></h5>
                     <input asp-for="Price" class="form-control" placeholder="Zmień cenę" />
                     <span asp-validation-for="Price"></span>
-
                 </div>
+            </div>
+            <div class="form-row mt-3">
+                <div class="col-4 form-group">
+                    <label asp-for="AgencyName">Agencja</label>
+                    <agencies-drop></agencies-drop>
+                </div>
+            </div>
+            <div>
+                <input type="hidden" asp-for="MainImageName" />
             </div>
             <div class="mt-4">
                 <button type="submit" class="btn btn-success mb-1" style="width:270px">Edytuj</button><a asp-action="Index" asp-controller="Customers" class="btn btn-danger ml-2 mb-1" style="width:270px">Anuluj</a>

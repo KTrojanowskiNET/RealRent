@@ -104,7 +104,7 @@ namespace RentData.Repositories
                                 .Include(a => a.Room)
                                 .Include(a => a.Apartment)
                                 .Include(a => a.CommercialSpace)
-                                .Include(a => a.Home).ToList();
+                                .Include(a => a.Home).AsNoTracking().ToList();
 
             return advertisements;
         }
@@ -113,6 +113,7 @@ namespace RentData.Repositories
         {
             var advertisements = dbContext.Advertisements
                                 .Where(a => a.User.UserName == userName)
+                                .AsNoTracking()
                                 .ToList();
             return advertisements;
         }

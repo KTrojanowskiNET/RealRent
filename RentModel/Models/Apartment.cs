@@ -40,14 +40,15 @@ namespace RentModel.Models
                 }
                 else
                 {
-                    sd =  null;
+                    sd = FullDescription;
                 }
             }
         }
         public string FullDescription { get; set; }
         public bool MainPageDisplay { get; set; }
         public bool FromAgency { get; set; }
-        public string Agent { get; set; }
+        public string AgencyName { get; set; }
+
         public double? Advance { get; set; }
         [ForeignKey("Advertisement")]
         public int? AdvertisementId { get; set; }

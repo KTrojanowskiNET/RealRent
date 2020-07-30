@@ -28,7 +28,7 @@ namespace RentModel.Models
             }
             set 
             {
-                recieverEmail = "kryszo1986@gmail.com";
+                recieverEmail = "ktrojanowski.net@yahoo.com";
             } 
         }
         public string SenderPassword { get; set; }

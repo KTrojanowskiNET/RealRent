@@ -39,12 +39,12 @@ namespace RentModel.Models
                 }
                 else
                 {
-                    sd = null;
+                    sd = FullDescription;
                 }
             }
         }
         public bool MainPageDisplay { get; set; }
-        public bool FromAgency { get; set; }
+        public string AgencyName { get; set; }
         public string Agent { get; set; }
         public double? Advance { get; set; }
 
@@ -61,6 +61,6 @@ namespace RentModel.Models
 
         public PropertyType PropertyType { get; set; }
         public string OwnerID { get; set; }
-
+        public bool FromAgency { get ; set; }
     }
 }

@@ -11,9 +11,12 @@ using RentData;
 using RentData.IRepos;
 using RentModel.Models;
 using RentModel;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RealRent.Controllers
 {
+    [Authorize]
+
     public class CommercialSpacesController : Controller
     {
         private readonly ILogger<CommercialSpacesController> logger;
@@ -40,6 +43,8 @@ namespace RealRent.Controllers
             {
                 return NotFound();
             }
+            ViewBag.Counter = spaces.Count();
+
             return View(spaces);
         }
 
@@ -83,7 +88,9 @@ namespace RealRent.Controllers
                 Name = cs.Name,
                 NumberOfRooms = cs.NumberOfRooms,
                 Floor = cs.Floor,
-                Id = cs.CommercialSpaceId
+                Id = cs.CommercialSpaceId,
+                AgencyName = cs.AgencyName,
+                MainImageName = cs.MainImageName
             };
             return View(viewModel);
         }
@@ -119,6 +126,7 @@ namespace RealRent.Controllers
                         PhotoName = name,
                         PhotoPath = Path.Combine(hostingEnvironment.WebRootPath, "images")
                     };
+                    cs.MainImageName = name;
                 }
                 if (model.Images != null)
                 {
@@ -143,13 +151,13 @@ namespace RealRent.Controllers
 
                 unit.CommercialSpaceRepository.EditCommercialSpace(cs);
                 unit.SaveData();
-                return RedirectToAction("Success", "Advertisements");
+                return RedirectToAction("Success", "Customers");
 
             }
 
             return View(model);
         }
 
-        
+
     }
 }

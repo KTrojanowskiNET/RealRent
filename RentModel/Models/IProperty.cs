@@ -18,8 +18,10 @@ namespace RentModel.Models
         public string FullDescription { get; set; }
         public bool MainPageDisplay { get; set; }
         public bool FromAgency { get; set; }
-        public string Agent { get; set; }
+        public string AgencyName { get; set; }
         public double? Advance { get; set; }
+        public int? AdvertisementId { get; set; }
+
         public Advertisement Advertisement { get; set; }
         public List<Photo> Images { get; set; }
         public Photo MainImage { get; set; }

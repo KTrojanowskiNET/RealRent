@@ -10,7 +10,7 @@ using System.Text;
 
 namespace RentModel
 {
-    
+
     public class AdManager : IAdManager
     {
         private readonly IWebHostEnvironment webHostEnvironment;
@@ -47,7 +47,7 @@ namespace RentModel
 
             if (photo != null)
             {
-                uniqueFileName = Guid.NewGuid().ToString() + "_" + photo.FileName;
+                uniqueFileName = Guid.NewGuid().ToString().Substring(0, 8) + "_" + photo.FileName;
             }
 
             return uniqueFileName;
@@ -59,8 +59,10 @@ namespace RentModel
             {
                 string uploadsFolder = directory;
                 string filePath = Path.Combine(uploadsFolder, uniqueName);
+
                 using var fileStream = new FileStream(filePath, FileMode.Create);
                 photo.CopyTo(fileStream);
+
             }
         }
 

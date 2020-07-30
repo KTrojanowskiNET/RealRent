@@ -1,0 +1,23 @@
+[33mcommit e79e610cbd2bab96993e7bb41be2b41315cfe023[m[33m ([m[1;36mHEAD -> [m[1;32mAgencies[m[33m)[m
+Author: Krystian Trojanowski <kryszo1986@gmail.com>
+Date:   Thu Jul 30 02:26:48 2020 +0200
+
+    AgenciesDropDownWork
+
+[33mcommit 98bec5b0aeeaf5fface7e77b3aa1031921663726[m
+Author: Krystian Trojanowski <kryszo1986@gmail.com>
+Date:   Wed Jul 29 17:24:52 2020 +0200
+
+    AddAgencies
+
+[33mcommit 00387ecad79c704429bd8a0a5825df3a0e10a02e[m
+Author: Krystian Trojanowski <kryszo1986@gmail.com>
+Date:   Wed Jul 29 15:50:23 2020 +0200
+
+    AgenciesRelationships
+
+[33mcommit 46014f31fab2654ce5c5a847fb0fe010316c4955[m[33m ([m[1;32mmaster[m[33m)[m
+Author: Krystian Trojanowski <kryszo1986@gmail.com>
+Date:   Tue Jul 28 13:57:14 2020 +0200
+
+    Initial Commit

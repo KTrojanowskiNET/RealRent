@@ -11,9 +11,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RealRent.Controllers
 {
+    [Authorize]
     public class ApartmentsController : Controller
     {
         private readonly ILogger<ApartmentsController> logger;
@@ -37,6 +39,8 @@ namespace RealRent.Controllers
             {
                 return NotFound();
             }
+            ViewBag.Counter = apartments.Count();
+
             return View(apartments);
         }
 
@@ -82,7 +86,9 @@ namespace RealRent.Controllers
                 HaveBasement = apartment.HaveBasement,
                 HaveBalcony = apartment.HaveBalcony,
                 MainImageName = apartment.MainImageName,
-                Id = apartment.ApartmentId
+                Id = apartment.ApartmentId,
+                AgencyName = apartment.AgencyName
+
             };
             return View(model);
         }
@@ -148,7 +154,7 @@ namespace RealRent.Controllers
 
                 unit.ApartmentRepository.EditApartment(editApartment);
                 unit.SaveData();
-                return RedirectToAction("Success", "Advertisements");
+                return RedirectToAction("Success", "Customers");
             }
             return View(model);
         }

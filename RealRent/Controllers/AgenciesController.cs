@@ -44,7 +44,7 @@ namespace RealRent.Controllers
                 unit.AgencyRepository.AddAgency(agency);
                 unit.SaveData();
             }
-            return View(agencyViewModel);
+            return RedirectToAction("Success", "Customers");
 
         }
     }

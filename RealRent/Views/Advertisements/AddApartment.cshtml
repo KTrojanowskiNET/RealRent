@@ -100,40 +100,43 @@
             </div>
             <div class="form-row mt-3">
                 <div class="col-4 form-group">
-                    <label asp-for="Advance"><h5 class="text-dark">Zaliczka</h5></label>
+                    <label asp-for="Advance">Zaliczka</label>
                     <input asp-for="Advance" class="form-control" placeholder="Podaj wysokość zaliczki" />
                     <span asp-validation-for="Advance"></span>
                 </div>
                 <div class="col-4 form-group">
-                    <label asp-for="Price"><h5 class="text-dark">Cena</h5></label>
+                    <label asp-for="Price">Cena<</label>
                     <input asp-for="Price" class="form-control" placeholder="Podaj cenę" />
                     <span asp-validation-for="Price"></span>
                 </div>
             </div>
             <div class="form-row mt-3">
                 <div class="col-4 form-group">
-                    <agenciesdropdown></agenciesdropdown>
+                    <label asp-for="AgencyName">Agencja</label>
+                    <select class="form-control  dropdown-info" asp-for="AgencyName">
+                        <agencies-drop></agencies-drop>
+                    </select>
                 </div>
-                </div>
-                <div class="mt-4">
-                    <button type="submit" class="btn btn-success mb-1" style="width:270px">Dodaj</button><a asp-action="Index" asp-controller="Customers" class="btn btn-danger ml-2 mb-1" style="width:270px">Anuluj</a>
-                </div>
-                @section Scripts {
-                    <script>
-                        $(document).ready(function () {
-                            $('.custom-file-input').on("change", function () {
-                                var fileLabel = $(this).next('.custom-file-label');
-                                var files = $(this)[0].files;
-                                if (files.length > 1) {
-                                    fileLabel.html(files.length + ' files selected');
-                                }
-                                else if (files.length == 1) {
-                                    fileLabel.html(files[0].name);
-                                }
-                            });
+            </div>
+            <div class="mt-4">
+                <button type="submit" class="btn btn-success mb-1" style="width:270px">Dodaj</button><a asp-action="Index" asp-controller="Customers" class="btn btn-danger ml-2 mb-1" style="width:270px">Anuluj</a>
+            </div>
+            @section Scripts {
+                <script>
+                    $(document).ready(function () {
+                        $('.custom-file-input').on("change", function () {
+                            var fileLabel = $(this).next('.custom-file-label');
+                            var files = $(this)[0].files;
+                            if (files.length > 1) {
+                                fileLabel.html(files.length + ' files selected');
+                            }
+                            else if (files.length == 1) {
+                                fileLabel.html(files[0].name);
+                            }
                         });
-                    </script>
-                }
-</form>
+                    });
+                </script>
+            }
+        </form>
     </div>
 </div>

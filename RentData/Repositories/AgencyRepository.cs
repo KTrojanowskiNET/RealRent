@@ -42,7 +42,7 @@ namespace RentData.Repositories
 
         public IEnumerable<Agency> GetAgencies()
         {
-            return dbContext.Agencies.ToList();
+            return dbContext.Agencies.AsNoTracking().ToList();
         }
 
         public Agency GetAgency(int id)

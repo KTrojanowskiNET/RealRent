@@ -56,7 +56,7 @@ namespace RentData.Repositories
 
         public IEnumerable<CommercialSpace> GetCommercialSpaces()
         {
-            return dbContext.CommercialSpaces;
+            return dbContext.CommercialSpaces.AsNoTracking();
         }
     }
 }

@@ -58,7 +58,7 @@ namespace RentData.Repositories
 
         public IEnumerable<Room> GetRooms()
         {
-            var rooms = dbContext.Rooms;
+            var rooms = dbContext.Rooms.AsNoTracking();
             return rooms;
         }
     }

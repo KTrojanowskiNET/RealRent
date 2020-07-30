@@ -1,4 +1,4 @@
-﻿
+﻿@model RealRent.Models.ServiceMessageViewModel
 @{
     ViewData["Title"] = "Contact";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -19,32 +19,35 @@
 
                 <div class="offset-2 col-8">
                     <div class="form-group">
-                        <label>Imię:</label>
-                        <input class="form-control" placeholder="Imię" />
+                        <label><b>Od Użytkownika:</b>  @Model.SenderName</label>
+                        <input type="hidden" class="form-control" asp-for="SenderName" />
                     </div>
 
+
+
                     <div class="form-group">
-                        <label>Email:</label>
-                        <input class="form-control" placeholder="Email" />
+                        <label><b>Z adresu:</b> @Model.SenderEmail</label>
+                        <input type="hidden" class="form-control" asp-for="SenderEmail" />
                     </div>
 
                     <div class="form-group mt-5">
-                        <label>Temat: </label>
-                        <select>
+                        <label asp-for="Subject"><b>Temat:</b> </label>
+                        <select class="form-control dropdown-info" asp-for="Subject">
                             <option value="">Dodawanie ogłoszenia</option>
                             <option value="">Logowanie/Rejestracja</option>
                             <option value="">Ustawiena konta</option>
                             <option value="">Inny</option>
-
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label>Wiadomość: </label>
-                        <textarea class="form-control"></textarea>
+                        <label asp-for="Text"><b>Wiadomość: </b></label>
+                        <textarea class="form-control" asp-for="Text" cols="3"></textarea>
                     </div>
                 </div>
-
+                <div class="form-group">
+                    <input type="hidden" class="form-control" asp-for="SenderPassword" />
+                </div>
                 <div class="form-group mt-4 mx-auto">
                     <button type="submit" class="btn btn-success mb-1" style="width:200px">Wyślij</button><a asp-action="Index" asp-controller="Customers" class="btn btn-danger ml-2 mb-1" style="width:200px">Anuluj</a>
                 </div>

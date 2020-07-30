@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="form-row mt-3">
-                    
+
                     <div class="col-2 form-group">
                         <label asp-for="NumberOfFloors">Liczba pięter</label>
                         <input asp-for="NumberOfFloors" class="form-control" placeholder="Zmień liczbę pięter" />
@@ -60,7 +60,7 @@
                         <input asp-for="HaveGarage" class="form-check-input" type="checkbox" />
                         <label asp-for="HaveGarage">Umeblowanie</label>
                     </div>
-                    
+
                 </div>
                 <div class="form-row mt-3">
                     <div class="col-8 form-group">
@@ -97,23 +97,34 @@
                         <span asp-validation-for="Price"></span>
                     </div>
                 </div>
+                <div class="form-row mt-3">
+                    <div class="col-4 form-group">
+                        <label asp-for="AgencyName">Agencja</label>
+                        <select class="form-control  dropdown-info" asp-for="AgencyName">
+                            <agencies-drop></agencies-drop>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <input type="hidden" asp-for="MainImageName" />
+                </div>
                 <div class="mt-4">
                     <button type="submit" class="btn btn-success mb-1" style="width:270px">Edytuj</button><a asp-action="Index" asp-controller="Customers" class="btn btn-danger ml-2 mb-1" style="width:270px">Anuluj</a>
                 </div>
                 @section Scripts {
                     <script>
-                    $(document).ready(function () {
-                        $('.custom-file-input').on("change", function () {
-                            var fileLabel = $(this).next('.custom-file-label');
-                            var files = $(this)[0].files;
-                            if (files.length > 1) {
-                                fileLabel.html(files.length + ' files selected');
-                            }
-                            else if (files.length == 1) {
-                                fileLabel.html(files[0].name);
-                            }
+                        $(document).ready(function () {
+                            $('.custom-file-input').on("change", function () {
+                                var fileLabel = $(this).next('.custom-file-label');
+                                var files = $(this)[0].files;
+                                if (files.length > 1) {
+                                    fileLabel.html(files.length + ' files selected');
+                                }
+                                else if (files.length == 1) {
+                                    fileLabel.html(files[0].name);
+                                }
+                            });
                         });
-                    });
                     </script>
                 }
             </form>

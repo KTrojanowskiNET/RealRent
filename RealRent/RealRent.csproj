@@ -56,6 +56,12 @@
     </Content>
   </ItemGroup>
 
+  <!--Script to install NPM when deploying to folder-->
+  <!--<Target Name="PublishScript" BeforeTargets="Publish">
+    <Exec Command="npm install" WorkingDirectory="$(PublishUrl)"></Exec>
+    <Exec Command="npm run build"/>
+  </Target>-->
+
 
 
 </Project>

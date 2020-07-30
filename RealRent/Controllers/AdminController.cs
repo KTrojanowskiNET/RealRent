@@ -124,7 +124,7 @@ namespace RealRent.Controllers
                 }
             }
             unitOfWork.SaveData();
-            return RedirectToAction("Success", "Advertisements");
+            return RedirectToAction("Success", "Customers");
         }
     }
 }
